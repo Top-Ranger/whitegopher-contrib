@@ -3,8 +3,7 @@
 Converters that migrate data from other CalDAV/CardDAV servers to
 [White Gopher](https://github.com/bitflipp/whitegopher). Each one reads the
 source server and writes a directory tree in White Gopher's
-[import format](https://github.com/bitflipp/whitegopher/blob/main/docs/import-format.md),
-which `whitegopher import` then loads. Python 3.8+, standard library only
+import format, which `whitegopher import` then loads. Python 3.8+, standard library only
 (except MySQL for Baikal).
 
 | Converter | Source |
@@ -38,8 +37,8 @@ whitegopher import ./tree
 The output directory must be empty or not exist. Sources are only read; stop
 clients from writing to the old server first (or accept that later changes are
 lost). Anything a converter had to change or skip is reported as a `warning:`
-on stderr. See the White Gopher deployment guide (section 8) for the rest of
-the migration.
+on stderr. See the [White Gopher](https://github.com/bitflipp/whitegopher)
+documentation for the rest of the migration.
 
 ## What is converted
 
@@ -47,7 +46,7 @@ the migration.
 |---|---|---|
 | Users | directory names | `users` table, with display name and email from `principals` |
 | Passwords | not available: set them in the admin UI | kept as `digest_ha1`; set White Gopher's `realm` to Baikal's (default `BaikalDAV`) **before** importing |
-| Calendars | name, description, colour, order, components, time zone | same, plus free-busy transparency |
+| Calendars | name, description, color, order, components, time zone | same, plus free-busy transparency |
 | Address books | name, description | same |
 | Objects | files as stored, URIs kept | rows as stored, URIs and ETags kept |
 
@@ -77,6 +76,6 @@ migration.
 Converters for other servers are welcome: add a folder with the script and a
 README, reuse `common/wgimport.py`, and add tests under `tests/`.
 
-## Licence
+## License
 
 [MIT](LICENSE), as White Gopher.
